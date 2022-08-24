@@ -1,33 +1,45 @@
 import {createRouter, createWebHistory} from 'vue-router'
 
-const routes =[
+const routes = [
     {
         path: "/",
         name: 'layout',
-        component: ()=>import('@/views/layout/Layout'),
+        component: () => import('@/views/layout/Layout'),
         redirect: '/book',
-        children:[
+        children: [
             {
                 path: "book",
                 name: 'book',
-                component: ()=>import('@/views/book/Book'),
+                component: () => import('@/views/book/Book'),
+                meta: {
+                    index: 1
+                }
             },
             {
                 path: "audio",
                 name: 'audio',
-                component: ()=>import('@/views/audio/Audio'),
+                component: () => import('@/views/audio/Audio'),
+                meta: {
+                    index: 1
+                }
             },
             {
                 path: "mine",
                 name: 'mine',
-                component: ()=>import('@/views/mine/Mine'),
+                component: () => import('@/views/mine/Mine'),
+                meta: {
+                    index: 1
+                }
             }
         ]
     },
     {
         path: "/search",
         name: 'search',
-        component: ()=>import('@/views/book/Search'),
+        component: () => import('@/views/book/Search'),
+        meta: {
+            index: 2
+        }
     }
 
 ]
