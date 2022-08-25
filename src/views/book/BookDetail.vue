@@ -11,6 +11,7 @@
         :placeholder="true"
         :title="title"
         left-arrow
+        @click-right="rightClick"
         @click-left="router.back()"
     >
       <template #right>
@@ -39,14 +40,18 @@
         </div>
       </van-list>
     </van-pull-refresh>
+    <left-menu :from="from" :now-url="detailUrl" :url="menuUrl" ref='menu' @loaData='load'></left-menu>
   </div>
 </template>
 
 <script setup>
-import {reactive, toRefs, onMounted, getCurrentInstance} from 'vue'
+import {reactive, toRefs, onMounted, getCurrentInstance, ref} from 'vue'
 import {useRouter} from 'vue-router'
+import LeftMenu from '@/components/book/LeftMenu'
 import {useBookStore} from '@/store'
 import Http from '@/http'
+
+const menu = ref(null)
 
 const router = useRouter()
 const bookStore = useBookStore()
@@ -63,7 +68,11 @@ const data = reactive({
   loading: false,
   finished: false
 })
-const {title, refreshing, bookDetail, loading, finished, detailList} = toRefs(data)
+const {title, refreshing, bookDetail, loading, finished, detailList, from, detailUrl, menuUrl} = toRefs(data)
+
+const rightClick = () => {
+  menu.value.show = true
+}
 
 onMounted(() => {
   data.title = bookStore.bookDetail.title
@@ -73,6 +82,11 @@ onMounted(() => {
   data.bookName = bookStore.bookDetail.bookName
   loadData(true, true)
 })
+
+const load = (url) => {
+  console.log(url)
+}
+
 
 const loadData = (flag, isRefresh) => {
   Http.get('/getBookDetail', {
