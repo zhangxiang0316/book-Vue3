@@ -107,18 +107,17 @@
 import {toRefs, reactive, onMounted} from 'vue'
 import {useRouter} from 'vue-router'
 import Http from '@/http'
-
+import {fromList} from '@/conf'
+import {useBookStore} from '@/store' // 引用js，路径根据你们对应配置好的路径填写
+const bookStore = useBookStore()
 const router = useRouter()
-
 const data = reactive({
   refreshing: false,
   detail: {},
   loading: false,
   active: 0
 })
-
 const {refreshing, detail, loading, active} = toRefs(data)
-
 const loadData = () => {
   data.loading = true
   Http.get('/biquge/home').then(res => {
@@ -136,10 +135,11 @@ const toSearch = () => {
 }
 
 const cellClick = (item) => {
-  console.log(item)
+  router.push({name: 'MenuList', query: {menuUrl: item.menuUrl, name: item.name, from: item.from}})
 }
 
 onMounted(() => {
+  bookStore.setBookFromList(fromList)
   loadData()
 })
 

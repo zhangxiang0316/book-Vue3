@@ -40,6 +40,22 @@ const routes = [
         meta: {
             index: 2
         }
+    },
+    {
+        path: "/menuList",
+        name: 'MenuList',
+        component: () => import('@/views/book/MenuList'),
+        meta: {
+            index: 3
+        }
+    },
+    {
+        path: "/bookDetail",
+        name: 'BookDetail',
+        component: () => import('@/views/book/BookDetail'),
+        meta: {
+            index: 4
+        }
     }
 
 ]

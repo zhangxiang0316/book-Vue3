@@ -126,4 +126,12 @@ body {
 }
 
 
+.g-relative {
+    position: relative;
+}
+.g-hidden {
+    overflow: hidden;
+}
+
+
 

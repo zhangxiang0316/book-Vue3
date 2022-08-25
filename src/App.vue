@@ -2,7 +2,9 @@
   <div class="app">
     <router-view v-slot="{ Component }">
       <transition :name="transitionName">
-        <component :is="Component"/>
+        <keep-alive :exclude="['BookDetail','MovieDetail']">
+          <component :is="Component"/>
+        </keep-alive>
       </transition>
     </router-view>
   </div>
@@ -21,7 +23,6 @@ const {transitionName} = toRefs(data)
 const route = useRoute()
 
 watch(() => route.meta, (to, from) => {
-      console.log('------', to.index, from.index)
       if (to.index && from.index) {
         if (from.index <= to.index) {
           data.transitionName = 'slide-left'
@@ -29,7 +30,6 @@ watch(() => route.meta, (to, from) => {
           data.transitionName = 'slide-right'
         }
       }
-      console.log(data.transitionName)
     }
 )
 </script>
