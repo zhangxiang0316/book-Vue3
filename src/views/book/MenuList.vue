@@ -46,10 +46,13 @@
 </template>
 
 <script setup>
-import {reactive, toRefs, onActivated, ref} from 'vue'
+import {reactive, toRefs, onActivated, ref,getCurrentInstance} from 'vue'
 import {useRouter, useRoute} from 'vue-router'
 import {useBookStore} from '@/store'
 import Http from '@/http'
+
+const globalProperties = getCurrentInstance().appContext.config.globalProperties;
+
 
 const data = reactive({
   title: '',
@@ -91,6 +94,7 @@ onActivated(() => {
 })
 
 const loadMenuList = () => {
+  globalProperties.$loading.show('加载中...')
   data.list = []
   data.info = {}
   Http.get('/getMenuList', {
@@ -99,6 +103,7 @@ const loadMenuList = () => {
       type: data.from
     }
   }).then(res => {
+    globalProperties.$loading.hide()
     data.list = res.list
     data.info = res.info
     // globalProperties.$loading.hide()

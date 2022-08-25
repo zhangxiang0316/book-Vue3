@@ -6,7 +6,12 @@ export const useBookStore = defineStore({
         return {
             bookFormList: [],
             bookDetail: {},
-            bookHistory: []
+            bookHistory: [],
+            isNight: false,
+            color: '#333',
+            backgroundColor: '#fff',
+            fontSize:15,
+            lineHeight:35
         }
     },
     getters: {},
@@ -19,6 +24,15 @@ export const useBookStore = defineStore({
         },
         setBookHistory(data) {
             this.bookHistory = data
+        },
+        setIsNight(data) {
+            this.isNight = data
+        },
+        setColor(data) {
+            this.color = data
+        },
+        setBackgroundColor(data) {
+            this.backgroundColor = data
         }
     },
     // 开启数据缓存，在 strategies 里自定义 key 值，并将存放位置由 sessionStorage 改为 localStorage

@@ -8,6 +8,7 @@ import 'vant/lib/index.css'
 import '@/assets/css/reset.css'
 import store from "@/store";
 import '@/assets/iconfont/iconfont.css'
+import loading from "@/components/loading";
 
 const app = createApp(App)
 app.config.globalProperties.$http = Http
@@ -15,8 +16,7 @@ app.config.globalProperties.$http = Http
 app
     .use(Vant)
     .use(store)
-    // .directive('loading', loading)  // 全局注册loading指令
-    // .use(loading)
+    .use(loading)
     .use(Lazyload)
     .use(router)
 app.mount('#app')
