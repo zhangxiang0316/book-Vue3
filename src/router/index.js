@@ -64,6 +64,14 @@ const routes = [
         meta: {
             index: 4
         }
+    },
+    {
+        path: "/history",
+        name: 'History',
+        component: () => import('@/views/book/History'),
+        meta: {
+            index: 4
+        }
     }
 
 ]

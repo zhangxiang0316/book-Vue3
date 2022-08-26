@@ -11,7 +11,7 @@
         :safe-area-inset-top="true"
         :placeholder="true"
         title="我的"
-        @click-right="router.push('/setting')"
+        @click-right="router.push({name:'Setting'})"
     >
       <template #right>
         <van-icon name="setting-o" color="#1989fa" size="20"/>
@@ -31,7 +31,7 @@
         is-link
         icon-prefix="iconfont"
         icon="jiachang_shujia"
-        @click="router.push({name:'history'})"
+        @click="router.push({name:'History'})"
     />
     <van-cell
         title="下载地址"
@@ -41,7 +41,7 @@
         @click="show=true"
     />
 
-    <van-dialog v-model="show" title="地址" show-cancel-button style="text-align: center">
+    <van-dialog v-model:show="show" title="地址" show-cancel-button style="text-align: center">
       <img style="width: 200px;height: 250px" src="@/assets/img/download.png">
     </van-dialog>
   </div>
