@@ -10,6 +10,7 @@ import store from "@/store";
 import '@/assets/iconfont/iconfont.css'
 import loading from "@/components/loading";
 
+
 const app = createApp(App)
 app.config.globalProperties.$http = Http
 
