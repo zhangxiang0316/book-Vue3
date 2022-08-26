@@ -56,6 +56,14 @@ const routes = [
         meta: {
             index: 4
         }
+    },
+    {
+        path: "/bookFrom",
+        name: 'BookFrom',
+        component: () => import('@/views/book/BookFrom'),
+        meta: {
+            index: 4
+        }
     }
 
 ]

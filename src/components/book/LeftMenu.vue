@@ -42,7 +42,7 @@ const data = reactive({
   selectIndex: '',
   list: []
 })
-const {show, selectIndex, list} = toRefs(data)
+const {show, list} = toRefs(data)
 
 defineExpose({
   show
@@ -81,7 +81,6 @@ const loadData = () => {
     data.selectIndex = data.list.findIndex(item => item.url === data.nowUrl)
   })
 }
-
 </script>
 
 <style scoped>

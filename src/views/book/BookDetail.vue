@@ -148,7 +148,7 @@ const loadData = (flag, isRefresh) => {
       bookName: data.bookName,
       title: data.title,
       from: data.from,
-      imgUrl: data.imgUrl
+      imgUrl: bookStore.bookDetail.imgUrl
     }
     if (index !== -1) {
       bookStore.bookHistory.splice(index, 1)

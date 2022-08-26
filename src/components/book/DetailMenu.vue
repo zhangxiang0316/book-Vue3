@@ -55,6 +55,8 @@ import {useBookStore} from '@/store'
 const bookStore = useBookStore()
 const setBackColor = (val) => {
   bookStore.setBackgroundColor(val)
+  bookStore.color = '#333'
+  bookStore.isNight = false
 }
 const setLineHeight = (val) => {
   bookStore.lineHeight = bookStore.lineHeight + val
